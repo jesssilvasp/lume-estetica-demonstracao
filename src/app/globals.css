@@ -118,9 +118,9 @@ body {
 
 /* ---------- hero helpers ---------- */
 #hero-section {
-  height: 100vh;
-  height: 100svh;
-  min-height: 640px;
+  height: auto;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 #hero-bg {
   will-change: transform, border-radius;
