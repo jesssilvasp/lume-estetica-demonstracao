@@ -135,7 +135,7 @@ export function HeroCinematic() {
       {/* conteúdo */}
       <div
         id="hero-content"
-        className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-center px-5 pb-10 pt-[150px] sm:px-8 sm:pt-[140px] lg:px-12"
+        className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-center px-5 pb-10 pt-[153px] sm:px-8 sm:pt-[143px] lg:px-12"
       >
         <div className="max-w-[620px]">
           <p className="hero-rise text-[10.5px] font-bold uppercase tracking-[0.3em] text-nude-300 sm:text-[11.5px]">
