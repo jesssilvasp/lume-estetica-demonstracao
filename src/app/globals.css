@@ -120,8 +120,7 @@ body {
 #hero-section {
   height: 100vh;
   height: 100svh;
-  min-height: 620px;
-  min-height: 100svh;
+  min-height: 640px;
 }
 #hero-bg {
   will-change: transform, border-radius;
