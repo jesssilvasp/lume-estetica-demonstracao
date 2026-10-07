@@ -24,15 +24,7 @@ export function HeroCinematic() {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       // ---------- FASE 1 — Entrada ----------
-      // Guarda contra animação travada: conteúdo nunca pode ficar invisível.
-      let introDone = false;
-      const intro = gsap.timeline({
-        defaults: { ease: "power3.out" },
-        onComplete: () => {
-          introDone = true;
-          gsap.set(".hero-rise", { clearProps: "transform,opacity" });
-        },
-      });
+      const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
       intro
         .fromTo("#hero-bg-img", { scale: 1.16 }, { scale: 1.08, duration: 1.6, ease: "power2.out" }, 0)
         .fromTo(
@@ -99,14 +91,7 @@ export function HeroCinematic() {
       };
       if (document.fonts?.ready) document.fonts.ready.then(safeRefresh).catch(() => {});
       window.addEventListener("hero:image-ready", safeRefresh, { once: true });
-      // Se a intro travar (aba em background, dispositivo lento), força o estado final.
-      const guard = window.setTimeout(() => {
-        if (!introDone) intro.progress(1);
-      }, 4000);
-      return () => {
-        window.clearTimeout(guard);
-        window.removeEventListener("hero:image-ready", safeRefresh);
-      };
+      return () => window.removeEventListener("hero:image-ready", safeRefresh);
     }, rootRef);
 
     return () => ctx.revert();
