@@ -18,3 +18,4 @@ out
 # typescript
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+.env*
