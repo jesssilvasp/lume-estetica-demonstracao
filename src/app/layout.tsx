@@ -1,31 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Manrope, Pinyon_Script, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-/** Fontes auto-hospedadas (build funciona 100% offline). */
-const serif = localFont({
-  src: [
-    { path: "./fonts/playfair-latin.woff2", weight: "400 700" },
-    { path: "./fonts/playfair-latin-ext.woff2", weight: "400 700" },
-  ],
+/** Fontes via Google Fonts (mesmas famílias do DESIGN.md, sem binários locais). */
+const serif = Playfair_Display({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-serif",
   display: "swap",
 });
 
-const sans = localFont({
-  src: [
-    { path: "./fonts/manrope-latin.woff2", weight: "400 800" },
-    { path: "./fonts/manrope-latin-ext.woff2", weight: "400 800" },
-  ],
+const sans = Manrope({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const script = localFont({
-  src: [
-    { path: "./fonts/pinyon-latin.woff2", weight: "400" },
-    { path: "./fonts/pinyon-latin-ext.woff2", weight: "400" },
-  ],
+const script = Pinyon_Script({
+  subsets: ["latin"],
+  weight: "400",
   variable: "--font-script",
   display: "swap",
 });
@@ -60,13 +54,13 @@ export const metadata: Metadata = {
     title: "Lume Estética — Beleza, bem-estar e confiança",
     description:
       "Profissionais especializadas, ambiente acolhedor e tecnologia para a melhor experiência de beleza.",
-    images: [{ url: "/images/hero.jpg", width: 1200, height: 630, alt: "Lume Estética" }],
+    images: [{ url: "https://images.pexels.com/photos/7195803/pexels-photo-7195803.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200", width: 1200, height: 630, alt: "Lume Estética" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lume Estética — Beleza, bem-estar e confiança",
     description: "Agende seu horário com a Luna, nossa assistente virtual.",
-    images: ["/images/hero.jpg"],
+    images: ["https://images.pexels.com/photos/7195803/pexels-photo-7195803.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"],
   },
   robots: { index: true, follow: true },
 };

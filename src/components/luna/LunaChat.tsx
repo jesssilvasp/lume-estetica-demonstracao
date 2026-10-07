@@ -226,7 +226,7 @@ export function LunaChat() {
         {showHeroPhoto ? (
           <div className="relative h-[210px] shrink-0 overflow-hidden">
             <Image
-              src="/images/luna.jpg"
+              src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=600&w=800"
               alt="Luna, assistente virtual da Lume"
               fill
               sizes="360px"
@@ -249,7 +249,7 @@ export function LunaChat() {
         ) : (
           <div className="flex shrink-0 items-center gap-3 border-b border-espresso-900/8 bg-cream-50/95 px-4 py-3 backdrop-blur">
             <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-nude-300">
-              <Image src="/images/luna.jpg" alt="Luna" fill sizes="44px" className="object-cover object-top" />
+              <Image src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=200" alt="Luna" fill sizes="44px" className="object-cover object-top" />
             </span>
             <span className="flex-1">
               <span className="block text-[14px] font-extrabold text-espresso-900">

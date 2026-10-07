@@ -3,22 +3,37 @@ import { Pool } from "pg";
 
 const databaseUrl = process.env.DATABASE_URL;
 
-if (!databaseUrl) {
-  throw new Error("DATABASE_URL is required");
-}
-
 const globalForDb = globalThis as typeof globalThis & {
   __arenaNextJsPostgresqlPool?: Pool;
 };
 
-export const pool =
-  globalForDb.__arenaNextJsPostgresqlPool ??
-  new Pool({
-    connectionString: databaseUrl,
-  });
-
-if (process.env.NODE_ENV !== "production") {
-  globalForDb.__arenaNextJsPostgresqlPool = pool;
+function getPool(): Pool {
+  if (!databaseUrl) {
+    throw new Error("DATABASE_URL is required");
+  }
+  if (!globalForDb.__arenaNextJsPostgresqlPool) {
+    globalForDb.__arenaNextJsPostgresqlPool = new Pool({
+      connectionString: databaseUrl,
+    });
+  }
+  return globalForDb.__arenaNextJsPostgresqlPool;
 }
 
-export const db = drizzle(pool);
+// Proxy preguiçoso: só conecta quando a query realmente executa.
+// Permite `next build` na Vercel sem DATABASE_URL (Fase 1 usa mocks em src/data).
+type Db = ReturnType<typeof drizzle>;
+function getDb(): Db {
+  return drizzle(getPool());
+}
+
+export const pool: Pool = new Proxy({} as Pool, {
+  get(_target, prop) {
+    return (getPool() as unknown as Record<PropertyKey, unknown>)[prop];
+  },
+});
+
+export const db: Db = new Proxy({} as Db, {
+  get(_target, prop) {
+    return (getDb() as unknown as Record<PropertyKey, unknown>)[prop];
+  },
+});

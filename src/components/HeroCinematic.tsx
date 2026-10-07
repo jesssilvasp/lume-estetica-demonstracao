@@ -108,7 +108,7 @@ export function HeroCinematic() {
       <div id="hero-bg" className="absolute inset-0 overflow-hidden">
         <Image
           id="hero-bg-img"
-          src="/images/hero.jpg"
+          src="https://images.pexels.com/photos/7195803/pexels-photo-7195803.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=1920"
           alt="Cliente radiante em salão de estética luxuoso e acolhedor"
           fill
           priority
